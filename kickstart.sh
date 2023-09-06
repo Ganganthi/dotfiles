@@ -35,4 +35,4 @@ mkdir ~/neovim
 cd ~/neovim
 wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz 
 tar xzvf nvim-linux64.tar.gz
-sudo ln -s ./nvim-linux64/bin/nvim /usr/local/bin
+sudo ln -s ~/neovim/nvim-linux64/bin/nvim /usr/local/bin
