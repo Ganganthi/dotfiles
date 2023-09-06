@@ -29,3 +29,10 @@ sudo install lazygit /usr/local/bin
 # zellij (like tmux, but more user friendly)
 # httpie (improved curl)
 # oathtool (otp on zsh plugin list)
+
+# Installing neovim
+mkdir ~/neovim
+cd ~/neovim
+wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz 
+tar xzvf nvim-linux64.tar.gz
+sudo ln -s ./nvim-linux64/bin/nvim /usr/local/bin
