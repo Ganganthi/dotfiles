@@ -12,11 +12,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 # Installing CLI tools
 sudo apt install -y tmux exa tree bat ripgrep fzf nodejs npm unzip \
-    zoxide neofetch fd-find g++ gcc
+    zoxide neofetch fd-find g++ gcc ranger
 
 # Cool tools that I might consider later
-# mc (file manager)
-# ranger (file manager)
 # entr (executes commands on file change)
 # logo-ls (ls with icons)
 # btop (like htop with a cooler UI)
@@ -24,6 +22,7 @@ sudo apt install -y tmux exa tree bat ripgrep fzf nodejs npm unzip \
 # httpie (improved curl)
 # oathtool (otp on zsh plugin list)
 
+# Installing lazygit
 cd ~
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
