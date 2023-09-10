@@ -103,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 alias lg=lazygit
 alias cat=batcat
 alias ls=exa
-source ~/.aliases
+# source ~/.aliases
 
 # set up zoxide
 eval "$(zoxide init zsh)"
@@ -114,11 +114,6 @@ PROMPT='%{$fg_bold[white]%}$USER@%{$fg[yellow]%}$NICKNAME%}%{$fg_bold[cyan]%} %c
 
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
-
-# Setting PATH
-export PATH=$PATH:/usr/local/go/bin:${KREW_ROOT:-$HOME/.krew}/bin:~/.gloo/bin
-export PATH=$PATH:$(go env GOPATH)/bin
-export PATH=~/.local/bin:$PATH
 
 # Set terminal theme
 export TERM=screen-256color
