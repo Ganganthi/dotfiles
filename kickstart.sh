@@ -44,3 +44,6 @@ wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.
 tar xzvf nvim-linux64.tar.gz
 sudo ln -s ~/neovim/nvim-linux64/bin/nvim /usr/local/bin
 
+# tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+

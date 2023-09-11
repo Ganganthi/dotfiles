@@ -122,4 +122,5 @@ export TERM=screen-256color
 # export vars
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$(go env GOPATH)/bin:$PATH"
+export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 
