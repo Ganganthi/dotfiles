@@ -26,6 +26,7 @@ sudo apt install -y tmux exa tree bat ripgrep fzf nodejs npm unzip \
 # oathtool (otp on zsh plugin list)
 
 # Install go
+# TODO: Test installing go with apt golang-go
 cd ~
 curl -OL https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
@@ -46,4 +47,9 @@ sudo ln -s ~/neovim/nvim-linux64/bin/nvim /usr/local/bin
 
 # tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Copy dotfiles
+cd "$(dirname "$0")"
+cp .zshrc ~
+cp .tmux.conf ~
 
