@@ -40,7 +40,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -103,6 +103,7 @@ source $ZSH/oh-my-zsh.sh
 alias lg=lazygit
 alias cat=batcat
 alias ls=exa
+alias n=nvim
 # source ~/.aliases
 
 # set up zoxide
@@ -117,4 +118,8 @@ LC_ALL=en_US.UTF-8
 
 # Set terminal theme
 export TERM=screen-256color
+
+# export vars
+export PATH=$PATH:/usr/local/go/bin
+export PATH="$(go env GOPATH)/bin:$PATH"
 

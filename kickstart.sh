@@ -25,6 +25,11 @@ sudo apt install -y tmux exa tree bat ripgrep fzf nodejs npm unzip \
 # httpie (improved curl)
 # oathtool (otp on zsh plugin list)
 
+# Install go
+cd ~
+curl -OL https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
+
 # Installing lazygit
 cd ~
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
@@ -38,3 +43,4 @@ cd ~/neovim
 wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz 
 tar xzvf nvim-linux64.tar.gz
 sudo ln -s ~/neovim/nvim-linux64/bin/nvim /usr/local/bin
+
