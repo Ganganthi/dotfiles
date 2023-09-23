@@ -52,4 +52,5 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 cd "$(dirname "$0")"
 cp .zshrc ~
 cp .tmux.conf ~
+cp tmux-sessionizer ~/.local/bin/
 

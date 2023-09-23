@@ -104,6 +104,7 @@ alias lg=lazygit
 alias cat=batcat
 alias ls=exa
 alias n=nvim
+alias t="~/.local/bin/tmux-sessionizer"
 # source ~/.aliases
 
 # set up zoxide
