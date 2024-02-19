@@ -15,7 +15,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 # Installing CLI tools
 sudo apt install -y tmux exa tree bat ripgrep fzf nodejs npm unzip \
-    zoxide neofetch fd-find g++ gcc ranger
+    zoxide neofetch fd-find g++ gcc ranger git curl vim stow
 
 # Cool tools that I might consider later
 # entr (executes commands on file change)
@@ -48,9 +48,6 @@ sudo ln -s ~/neovim/nvim-linux64/bin/nvim /usr/local/bin
 # tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# Copy dotfiles
-cd "$(dirname "$0")"
-cp .zshrc ~
-cp .tmux.conf ~
-cp tmux-sessionizer ~/.local/bin/
-
+# Use stow to sym-link my dotfiles
+# NOTE: Run this from the same folder as the script!
+stow .
