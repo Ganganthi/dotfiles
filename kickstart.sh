@@ -15,7 +15,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 # Installing CLI tools
 sudo apt install -y tmux exa tree bat ripgrep fzf nodejs npm unzip \
-    zoxide neofetch fd-find g++ gcc ranger git curl vim stow
+	zoxide neofetch fd-find g++ gcc ranger git curl vim stow python3-pip
 
 # Cool tools that I might consider later
 # entr (executes commands on file change)
@@ -41,7 +41,7 @@ sudo install lazygit /usr/local/bin
 # Installing neovim
 mkdir ~/neovim
 cd ~/neovim
-wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz 
+wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
 tar xzvf nvim-linux64.tar.gz
 sudo ln -s ~/neovim/nvim-linux64/bin/nvim /usr/local/bin
 
