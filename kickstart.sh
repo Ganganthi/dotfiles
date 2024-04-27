@@ -31,6 +31,10 @@ cd ~
 curl -OL https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
 
+# Update node.js
+sudo npm install n -g
+sudo n stable
+
 # Installing lazygit
 cd ~
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
