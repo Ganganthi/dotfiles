@@ -15,7 +15,8 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 # Installing CLI tools
 sudo apt install -y tmux exa tree bat ripgrep fzf nodejs npm unzip \
-	zoxide neofetch fd-find g++ gcc ranger git curl vim stow python3-pip
+	zoxide neofetch fd-find g++ gcc ranger git curl vim stow python3-pip python3-venv \
+	luarocks
 
 # Cool tools that I might consider later
 # entr (executes commands on file change)
