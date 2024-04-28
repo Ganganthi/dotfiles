@@ -34,6 +34,9 @@ cd ~
 curl -OL https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
 
+# Install cargo
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+
 # Update node.js
 sudo npm install n -g
 sudo n stable
@@ -51,6 +54,10 @@ cd ~/neovim
 wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
 tar xzvf nvim-linux64.tar.gz
 sudo ln -s ~/neovim/nvim-linux64/bin/nvim /usr/local/bin
+
+# Install packages for neovim
+pip3 install pynvim
+npm install -g neovim
 
 # tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
