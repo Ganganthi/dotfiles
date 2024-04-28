@@ -111,8 +111,8 @@ alias t="~/.local/bin/tmux-sessionizer"
 eval "$(zoxide init zsh)"
 
 # Prompt
-NICKNAME="$HOST"
-PROMPT='%{$fg_bold[white]%}$USER@%{$fg[yellow]%}$NICKNAME%}%{$fg_bold[cyan]%} %c $(git_prompt_info)%{$reset_color%}'
+# NICKNAME="$HOST"
+# PROMPT='%{$fg_bold[white]%}$USER@%{$fg[yellow]%}$NICKNAME%}%{$fg_bold[cyan]%} %c $(git_prompt_info)%{$reset_color%}'
 
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
