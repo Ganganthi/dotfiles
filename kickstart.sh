@@ -28,6 +28,13 @@ sudo apt install -y tmux exa tree bat ripgrep fzf nodejs npm unzip \
 # httpie (improved curl)
 # oathtool (otp on zsh plugin list)
 
+# Install nerd font
+cd ~
+wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFontMono-Regular.ttf -P ~/.fonts
+fc-cache -fv ~/.fonts
+# wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
+# unzip JetBrainsMono.zip -d ~/.fonts
+
 # Install go
 # TODO: Test installing go with apt golang-go
 cd ~
