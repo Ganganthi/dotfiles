@@ -71,4 +71,4 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Use stow to sym-link my dotfiles
 # NOTE: Run this from the same folder as the script!
-stow stow_files
+stow -R stow_files
