@@ -1,19 +1,34 @@
 #!/bin/bash
 
+script_dir=$(dirname "$(realpath "$0")")
+
 # Updating packages
 sudo apt update && sudo apt upgrade -y
 
 # Installing zsh
-sudo apt install zsh -y
-chsh -s $(which zsh)
+if ! which zsh >/dev/null; then
+	echo "Installing zsh"
+	sudo apt install zsh -y
+	chsh -s "$(which zsh)"
+fi
 
 # Installing oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-rm ~/.zshrc
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+	echo "Installing oh-my-zsh"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+	rm ~/.zshrc
+fi
 
 # Oh-my-zsh plugins
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+zsh_plugins_folder="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"
+if [ ! -d "$zsh_plugins_folder/plugins/zsh-autosuggestions" ]; then
+	echo "Installing zsh-autosuggestions"
+	git clone https://github.com/zsh-users/zsh-autosuggestions "$zsh_plugins_folder/plugins/zsh-autosuggestions"
+fi
+if [ ! -d "$zsh_plugins_folder/themes/powerlevel10k" ]; then
+	echo "Installing powerlevel10k"
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$zsh_plugins_folder/themes/powerlevel10k"
+fi
 
 # Installing CLI tools
 sudo apt install -y tmux exa tree bat ripgrep fzf nodejs npm unzip \
@@ -29,46 +44,67 @@ sudo apt install -y tmux exa tree bat ripgrep fzf nodejs npm unzip \
 # oathtool (otp on zsh plugin list)
 
 # Install nerd font
-cd ~
-wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFontMono-Regular.ttf -P ~/.fonts
-fc-cache -fv ~/.fonts
-# wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
-# unzip JetBrainsMono.zip -d ~/.fonts
+# NOTE: It is likely that you will need to choose the font on the terminal settings
+cd ~ || exit 1
+if [ ! -f ~/.fonts/FiraCodeNerdFontMono-Regular.ttf ]; then
+	wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFontMono-Regular.ttf -P ~/.fonts
+	fc-cache -fv ~/.fonts
+fi
+# if [ ! -f ~/.fonts/JetBrainsMonoNerdFontMono-Medium.ttf ]; then
+# 	wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
+# 	unzip JetBrainsMono.zip -d ~/.fonts
+# fi
 
 # Install go
 # TODO: Test installing go with apt golang-go
-cd ~
-curl -OL https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
-sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
+if ! which go >/dev/null; then
+	echo "Installing golang"
+	cd ~ || exit 1
+	curl -OL https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
+	sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
+fi
 
 # Install cargo
-curl https://sh.rustup.rs -sSf | sh -s -- -y
+if ! which cargo >/dev/null; then
+	echo "Installing cargo"
+	curl https://sh.rustup.rs -sSf | sh -s -- -y
+fi
 
 # Update node.js
 sudo npm install n -g
 sudo n stable
 
 # Installing lazygit
-cd ~
-LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-tar xf lazygit.tar.gz lazygit
-sudo install lazygit /usr/local/bin
+if ! which lazygit >/dev/null; then
+	echo "Installing lazygit"
+	cd ~ || exit 1
+	LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+	tar xf lazygit.tar.gz lazygit
+	sudo install lazygit /usr/local/bin
+fi
 
 # Installing neovim
-mkdir ~/neovim
-cd ~/neovim
-wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
-tar xzvf nvim-linux64.tar.gz
-sudo ln -s ~/neovim/nvim-linux64/bin/nvim /usr/local/bin
+if ! which lazygit >/dev/null; then
+	echo "Installing neovim"
+	mkdir ~/neovim
+	cd ~/neovim || exit 1
+	wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+	tar xzvf nvim-linux64.tar.gz
+	sudo ln -s ~/neovim/nvim-linux64/bin/nvim /usr/local/bin
+fi
 
 # Install packages for neovim
 pip3 install pynvim
-npm install -g neovim
+sudo npm install -g neovim
 
 # tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+	echo "Installing tmux plugin manager"
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
 # Use stow to sym-link my dotfiles
 # NOTE: Run this from the same folder as the script!
+cd $script_dir || exit 1
 stow -R stow_files
