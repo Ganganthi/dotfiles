@@ -105,6 +105,5 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
 fi
 
 # Use stow to sym-link my dotfiles
-# NOTE: Run this from the same folder as the script!
-cd $script_dir || exit 1
+cd "$script_dir" || exit 1
 stow -R stow_files
