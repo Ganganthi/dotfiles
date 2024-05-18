@@ -22,7 +22,7 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 # Oh-my-zsh plugins
-zsh_plugins_folder="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"
+zsh_plugins_folder="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
 if [ ! -d "$zsh_plugins_folder/plugins/zsh-autosuggestions" ]; then
 	echo "Installing zsh-autosuggestions"
 	git clone https://github.com/zsh-users/zsh-autosuggestions "$zsh_plugins_folder/plugins/zsh-autosuggestions"
