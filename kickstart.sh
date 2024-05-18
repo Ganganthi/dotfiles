@@ -35,7 +35,7 @@ fi
 # Installing CLI tools
 sudo apt install -y tmux exa tree bat ripgrep fzf nodejs npm unzip \
 	zoxide neofetch fd-find g++ gcc ranger git curl vim stow python3-pip python3-venv \
-	luarocks
+	luarocks python3-neovim
 
 # Cool tools that I might consider later
 # entr (executes commands on file change)
@@ -61,7 +61,7 @@ fi
 # TODO: Test installing go with apt golang-go
 if ! which go >/dev/null; then
 	echo "Installing golang"
-    sudo apt install -y golang-go
+	sudo apt install -y golang-go
 	# cd "$download_dir" || exit 1
 	# curl -OL https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
 	# sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
@@ -70,7 +70,7 @@ fi
 # Install cargo
 if ! which cargo >/dev/null; then
 	echo "Installing cargo"
-    cd "$download_dir" || exit 1
+	cd "$download_dir" || exit 1
 	curl https://sh.rustup.rs -sSf | sh -s -- -y
 fi
 
@@ -81,7 +81,7 @@ sudo n stable
 # Installing lazygit
 if ! which lazygit >/dev/null; then
 	echo "Installing lazygit"
-    cd "$download_dir" || exit 1
+	cd "$download_dir" || exit 1
 	LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 	tar xf lazygit.tar.gz lazygit
@@ -91,7 +91,7 @@ fi
 # Installing neovim
 if ! which nvim >/dev/null; then
 	echo "Installing neovim"
-    neovim_dir="$download_dir/neovim"
+	neovim_dir="$download_dir/neovim"
 	mkdir "$neovim_dir"
 	cd "$neovim_dir" || exit 1
 	wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
