@@ -61,9 +61,10 @@ fi
 # TODO: Test installing go with apt golang-go
 if ! which go >/dev/null; then
 	echo "Installing golang"
-	cd ~ || exit 1
-	curl -OL https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
-	sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
+    sudo apt install -y golang-go
+	# cd "$download_dir" || exit 1
+	# curl -OL https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
+	# sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
 fi
 
 # Install cargo
