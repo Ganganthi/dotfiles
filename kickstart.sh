@@ -1,6 +1,8 @@
 #!/bin/bash
 
 script_dir=$(dirname "$(realpath "$0")")
+download_dir="$script_dir/downloads"
+mkdir -p "$download_dir"
 
 # Updating packages
 sudo apt update && sudo apt upgrade -y
@@ -45,7 +47,7 @@ sudo apt install -y tmux exa tree bat ripgrep fzf nodejs npm unzip \
 
 # Install nerd font
 # NOTE: It is likely that you will need to choose the font on the terminal settings
-cd ~ || exit 1
+cd "$download_dir" || exit 1
 if [ ! -f ~/.fonts/FiraCodeNerdFontMono-Regular.ttf ]; then
 	wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFontMono-Regular.ttf -P ~/.fonts
 	fc-cache -fv ~/.fonts
@@ -67,6 +69,7 @@ fi
 # Install cargo
 if ! which cargo >/dev/null; then
 	echo "Installing cargo"
+    cd "$download_dir" || exit 1
 	curl https://sh.rustup.rs -sSf | sh -s -- -y
 fi
 
@@ -77,7 +80,7 @@ sudo n stable
 # Installing lazygit
 if ! which lazygit >/dev/null; then
 	echo "Installing lazygit"
-	cd ~ || exit 1
+    cd "$download_dir" || exit 1
 	LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 	curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 	tar xf lazygit.tar.gz lazygit
@@ -85,13 +88,14 @@ if ! which lazygit >/dev/null; then
 fi
 
 # Installing neovim
-if ! which lazygit >/dev/null; then
+if ! which nvim >/dev/null; then
 	echo "Installing neovim"
-	mkdir ~/neovim
-	cd ~/neovim || exit 1
+    neovim_dir="$download_dir/neovim"
+	mkdir "$neovim_dir"
+	cd "$neovim_dir" || exit 1
 	wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
 	tar xzvf nvim-linux64.tar.gz
-	sudo ln -s ~/neovim/nvim-linux64/bin/nvim /usr/local/bin
+	sudo ln -s "$neovim_dir/nvim-linux64/bin/nvim" /usr/local/bin
 fi
 
 # Install packages for neovim
@@ -106,4 +110,5 @@ fi
 
 # Use stow to sym-link my dotfiles
 cd "$script_dir" || exit 1
+echo "Stow-ing files"
 stow -R stow_files
