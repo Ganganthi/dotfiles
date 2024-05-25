@@ -127,3 +127,5 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH="$(go env GOPATH)/bin:$PATH"
 export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc 
+
