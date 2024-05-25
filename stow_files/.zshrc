@@ -106,6 +106,7 @@ alias ld=lazydocker
 alias cat=batcat
 alias ls=exa
 alias n=nvim
+alias leet="nvim leetcode.nvim"
 alias t="~/.local/bin/tmux-sessionizer"
 # source ~/.aliases
 
