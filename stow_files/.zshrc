@@ -102,6 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 alias lg=lazygit
+alias ld=lazydocker
 alias cat=batcat
 alias ls=exa
 alias n=nvim

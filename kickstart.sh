@@ -109,6 +109,20 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
+# Install tools with go
+go install github.com/jesseduffield/lazydocker@latest
+
+# Install docker
+if ! which docker >/dev/null; then
+	echo "Installing docker"
+	sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+	echo "deb [signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+	sleep 2
+	sudo apt install -y docker-ce docker-ce-cli containerd.io
+	sudo usermod -aG docker "$USER"
+fi
+
 # Use stow to sym-link my dotfiles
 cd "$script_dir" || exit 1
 echo "Stow-ing files"
