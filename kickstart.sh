@@ -119,8 +119,24 @@ fi
 if ! which docker >/dev/null; then
 	echo "Installing docker"
 	sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
-	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-	echo "deb [signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+	sudo install -m 0755 -d /etc/apt/keyrings
+	sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+	sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+	OS_NAME=$(. /etc/os-release && echo "$NAME")
+	if [ "$OS_NAME" == "Linux Mint" ]; then
+		VERSION=$(. /etc/os-release && echo "$UBUNTU_CODENAME")
+	elif [ "$OS_NAME" == "Ubuntu" ]; then
+		VERSION=$(. /etc/os-release && echo "$VERSION_CODENAME")
+	else
+		echo "Invalid OS used: $OS_NAME"
+		exit 1
+	fi
+	echo \
+		"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] \
+        https://download.docker.com/linux/ubuntu $VERSION stable" |
+		sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+	sudo apt update
 	sleep 2
 	sudo apt install -y docker-ce docker-ce-cli containerd.io
 	sudo usermod -aG docker "$USER"
