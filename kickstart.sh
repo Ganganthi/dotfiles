@@ -110,7 +110,10 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
 fi
 
 # Install tools with go
-go install github.com/jesseduffield/lazydocker@latest
+if ! which lazydocker >/dev/null; then
+	echo "Installing lazydocker"
+	go install github.com/jesseduffield/lazydocker@latest
+fi
 
 # Install docker
 if ! which docker >/dev/null; then
