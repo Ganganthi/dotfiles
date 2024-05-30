@@ -29,6 +29,7 @@ return {
       ensure_installed = {
         "bashls",
         "clangd",
+        "gopls",
         "lua_ls",
         "marksman",
         "spectral",
@@ -44,17 +45,22 @@ return {
       ensure_installed = {
         -- formatters
         "black",
+        "gofumpt",
+        "golines",
+        "goimports",
         "stylua",
         "prettier",
         "shfmt",
         -- linters
         "codespell",
         -- "flake8",
+        "golangci-lint",
         "mypy",
         "luacheck",
         "markdownlint",
         "pyproject-flake8",
         "shellcheck",
+        "staticcheck",
         "yamllint",
       },
     })
