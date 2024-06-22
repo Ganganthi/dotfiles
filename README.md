@@ -21,3 +21,8 @@ In order to use it, just run the kickstart script:
 
 If this is the first time running it, you might need to change the terminal font
 and restart the machine for the change to take effect.
+
+## NOTE
+
+As stow is used to manage the dotfiles, and it stows it to the previous folder (..),
+this repo needs to be cloned in the home folder.
