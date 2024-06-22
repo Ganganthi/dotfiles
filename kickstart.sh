@@ -33,7 +33,7 @@ if [ ! -d "$zsh_plugins_folder/themes/powerlevel10k" ]; then
 fi
 
 # Installing CLI tools
-sudo apt install -y tmux exa tree bat ripgrep fzf nodejs npm unzip \
+sudo apt install -y tmux eza tree bat ripgrep fzf nodejs npm unzip \
 	zoxide neofetch fd-find g++ gcc ranger git curl vim stow python3-pip python3-venv \
 	luarocks python3-neovim
 
