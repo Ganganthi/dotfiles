@@ -139,6 +139,7 @@ if ! which docker >/dev/null; then
 	sudo apt update
 	sleep 2
 	sudo apt install -y docker-ce docker-ce-cli containerd.io
+	sudo groupadd docker
 	sudo usermod -aG docker "$USER"
 fi
 
