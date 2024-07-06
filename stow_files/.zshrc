@@ -108,7 +108,7 @@ alias ls=exa
 alias n=nvim
 alias leet="nvim leetcode.nvim"
 alias t="~/.local/bin/tmux-sessionizer"
-# source ~/.aliases
+alias tm="tmux attach"
 
 # set up zoxide
 eval "$(zoxide init zsh)"
