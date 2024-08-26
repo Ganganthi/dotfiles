@@ -24,6 +24,6 @@ return {
     vim.keymap.set("n", "<Leader>bd", function()
       vim.cmd("NeoNoName")
       vim.cmd("bn")
-    end)
+    end, { desc = "Buffer Delete" })
   end,
 }
