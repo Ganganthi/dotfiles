@@ -104,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 alias lg=lazygit
 alias ld=lazydocker
 alias cat=batcat
-alias ls=exa
+alias ls=eza
 alias n=nvim
 alias leet="nvim leetcode.nvim"
 alias t="~/.local/bin/tmux-sessionizer"

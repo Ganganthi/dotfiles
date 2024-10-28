@@ -117,6 +117,17 @@ if ! which lazydocker >/dev/null; then
     go install github.com/jesseduffield/lazydocker@latest
 fi
 
+# Install eza
+if ! which eza >/dev/null; then
+    echo "Installing eza"
+    sudo mkdir -p /etc/apt/keyrings
+    wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+    echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+    sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+    sudo apt update
+    sudo apt install -y eza
+fi
+
 # Install docker
 if ! which docker >/dev/null; then
     echo "Installing docker"
