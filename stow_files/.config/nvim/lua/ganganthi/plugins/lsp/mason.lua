@@ -44,7 +44,8 @@ return {
       -- list of tools for mason to install
       ensure_installed = {
         -- formatters
-        "black",
+        -- "black",
+        "ruff",
         "gofumpt",
         "golines",
         "goimports",
@@ -58,7 +59,7 @@ return {
         "mypy",
         "luacheck",
         "markdownlint",
-        "pyproject-flake8",
+        -- "pyproject-flake8",
         "shellcheck",
         "staticcheck",
         "yamllint",

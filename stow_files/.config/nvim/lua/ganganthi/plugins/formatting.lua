@@ -6,7 +6,7 @@ return {
 
     conform.setup({
       formatters_by_ft = {
-        python = { "black" },
+        python = { "ruff_format" },
         lua = { "stylua" },
         sh = { "shfmt" },
         yaml = { "prettier" },
@@ -14,17 +14,11 @@ return {
         markdown = { "prettier" },
       },
       format_on_save = {
-        lsp_fallback = true,
+	lsp_format = "fallback",
         async = false,
         timeout_ms = 1000,
       },
     })
 
-    require("conform.formatters.black").args = {
-      "--stdin-filename",
-      "$FILENAME",
-      "--quiet",
-      "-",
-    }
   end,
 }
