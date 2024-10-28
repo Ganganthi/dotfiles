@@ -9,6 +9,10 @@ mkdir -p "$download_dir"
 # Updating packages
 sudo apt update && sudo apt upgrade -y
 
+# Installing CLI tools
+sudo apt install -y tmux tree bat ripgrep fzf nodejs npm unzip luarocks \
+    zoxide neofetch fd-find g++ gcc ranger git curl vim stow python3-pip python3-venv
+
 # Installing zsh
 if ! which zsh >/dev/null; then
     echo "Installing zsh"
@@ -33,11 +37,6 @@ if [ ! -d "$zsh_plugins_folder/themes/powerlevel10k" ]; then
     echo "Installing powerlevel10k"
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$zsh_plugins_folder/themes/powerlevel10k"
 fi
-
-# Installing CLI tools
-sudo apt install -y tmux eza tree bat ripgrep fzf nodejs npm unzip \
-    zoxide neofetch fd-find g++ gcc ranger git curl vim stow python3-pip python3-venv \
-    luarocks python3-neovim
 
 # Cool tools that I might consider later
 # entr (executes commands on file change)
@@ -68,6 +67,7 @@ if ! which go >/dev/null; then
     curl -OL https://go.dev/dl/go1.21.1.linux-amd64.tar.gz
     sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.21.1.linux-amd64.tar.gz
 fi
+export PATH=$PATH:/usr/local/go/bin
 
 # Install cargo
 if ! which cargo >/dev/null; then
@@ -152,9 +152,13 @@ if ! which docker >/dev/null; then
     sudo apt update
     sleep 2
     sudo apt install -y docker-ce docker-ce-cli containerd.io
-    sudo groupadd docker
+    if ! getent group docker; then
+        sudo groupadd docker
+    fi
     sudo usermod -aG docker "$USER"
 fi
+
+sudo apt install -y python3-neovim
 
 # Use stow to sym-link my dotfiles
 cd "$script_dir" || exit 1
