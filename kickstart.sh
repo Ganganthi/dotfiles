@@ -102,7 +102,6 @@ if ! which nvim >/dev/null; then
 fi
 
 # Install packages for neovim
-pip3 install pynvim
 sudo npm install -g neovim
 
 # tmux plugin manager
@@ -158,7 +157,7 @@ if ! which docker >/dev/null; then
     sudo usermod -aG docker "$USER"
 fi
 
-sudo apt install -y python3-neovim
+sudo apt install -y python3-pynvim
 
 # Use stow to sym-link my dotfiles
 cd "$script_dir" || exit 1
