@@ -120,21 +120,23 @@ return {
       on_attach = on_attach,
     })
 
+    -- vim.g.python3_host_prog = "/home/thiago/.venv_neovim/bin/python3"
     -- configure python server
     lspconfig["pyright"].setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = {
-            pyright = {
-                disableOrganizeImports = true, -- Using Ruff
-            },
-            python = {
-                analysis = {
-                    ignore = { '*' }, -- Using Ruff
-                    typeCheckingMode = "off",
-                },
-            },
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+        pyright = {
+          disableOrganizeImports = true, -- Using Ruff
         },
+        python = {
+          -- pythonPath = "/home/thiago/.venv_neovim/bin/python3",
+          analysis = {
+            ignore = { "*" }, -- Using Ruff
+            typeCheckingMode = "off",
+          },
+        },
+      },
     })
 
     -- SQL
