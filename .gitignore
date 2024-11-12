@@ -1,2 +1,4 @@
 stow_files/.config/nvim/lazy-lock.json
+stow_files/.config/github-copilot/versions.json
+stow_files/.local/bin
 downloads/
