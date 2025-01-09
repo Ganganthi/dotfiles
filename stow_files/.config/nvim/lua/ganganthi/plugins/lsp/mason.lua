@@ -43,7 +43,7 @@ return {
     mason_tool_installer.setup({
       -- list of tools for mason to install
       ensure_installed = {
-        -- formatters
+        -- FORMATTERS
         -- "black",
         "ruff",
         "gofumpt",
@@ -52,7 +52,7 @@ return {
         "stylua",
         "prettier",
         "shfmt",
-        -- linters
+        -- LINTERS
         "codespell",
         -- "flake8",
         "golangci-lint",
@@ -63,6 +63,8 @@ return {
         "shellcheck",
         "staticcheck",
         "yamllint",
+        -- DEBUGGERS
+        "delve",
       },
     })
   end,
