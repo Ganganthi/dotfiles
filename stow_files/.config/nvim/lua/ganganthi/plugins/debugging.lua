@@ -8,10 +8,10 @@ return {
     "williamboman/mason.nvim",
   },
   config = function()
-    local dap, dapui = require("dap"), require("dapui")
+    local dap, dapui, dap_go = require("dap"), require("dapui"), require("dap-go")
 
-    require("dap-go").setup()
-    require("dapui").setup()
+    dap_go.setup()
+    dapui.setup()
 
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
@@ -27,7 +27,9 @@ return {
     end
 
     vim.keymap.set("n", "<Leader>db", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
-    vim.keymap.set("n", "<Leader>dt", dapui.toggle, { desc = "Toggle UI" })
+    vim.keymap.set("n", "<Leader>du", dapui.toggle, { desc = "Toggle UI" })
+    vim.keymap.set("n", "<Leader>dt", dap_go.debug_test, { desc = "Debug Test" })
+    vim.keymap.set("n", "<Leader>dl", dap_go.debug_last_test, { desc = "Debug Last Test" })
 
     -- Eval var under cursor
     vim.keymap.set("n", "<space>?", function()
