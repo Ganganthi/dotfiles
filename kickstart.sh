@@ -96,9 +96,9 @@ if ! which nvim >/dev/null; then
     neovim_dir="$download_dir/neovim"
     mkdir "$neovim_dir"
     cd "$neovim_dir" || exit 1
-    wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
-    tar xzvf nvim-linux64.tar.gz
-    sudo ln -s "$neovim_dir/nvim-linux64/bin/nvim" /usr/local/bin
+    wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz
+    tar xzvf nvim-linux-x86_64.tar.gz
+    sudo ln -s "$neovim_dir/nvim-linux-x86_64/bin/nvim" /usr/local/bin
 fi
 
 # Install packages for neovim
