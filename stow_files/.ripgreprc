@@ -4,4 +4,8 @@
 # Using glob patterns to include/exclude files or folders
 --glob=!.git/*
 --glob=!.tox/*
+--glob=!**/.mypy_cache/*
+--glob=!**/.venv/*
+--glob=!**/__pycache__/*
 --glob=!**/client/**
+--glob=!**/pyclient/**
