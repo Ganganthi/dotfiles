@@ -103,6 +103,7 @@ fi
 
 # Install packages for neovim
 sudo npm install -g neovim
+sudo npm install -g sql-language-server
 
 # tmux plugin manager
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
