@@ -1,11 +1,11 @@
 return {
   -- Highlight, edit, and navigate code
-  'nvim-treesitter/nvim-treesitter',
+  "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    'nvim-treesitter/nvim-treesitter-textobjects',
+    "nvim-treesitter/nvim-treesitter-textobjects",
   },
-  build = ':TSUpdate',
+  build = ":TSUpdate",
   config = function()
     -- import nvim-treesitter plugin
     local treesitter = require("nvim-treesitter.configs")
@@ -25,6 +25,7 @@ return {
         "dockerfile",
         "gitignore",
         "json",
+        "java",
         "lua",
         "markdown",
         "python",
