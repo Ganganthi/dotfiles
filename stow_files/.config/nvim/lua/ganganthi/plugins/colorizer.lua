@@ -1,5 +1,9 @@
 return {
-    "NvChad/nvim-colorizer.lua",
-    event = { "BufReadPre", "BufNewFile" },
-    config = true,
+  "catgoose/nvim-colorizer.lua",
+  event = "BufReadPre",
+  opts = {
+    user_default_options = {
+      names = false,
+    },
+  },
 }
