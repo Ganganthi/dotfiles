@@ -6,7 +6,6 @@ script_dir=$(dirname "$(realpath "$0")")
 download_dir="$script_dir/downloads"
 mkdir -p "$download_dir"
 
-
 function install_brew_package() {
     command_name="$1"
     package_name="$2"
@@ -96,7 +95,7 @@ install_brew_package "fd" "fd"
 install_brew_package "bat" "bat"
 install_brew_package "luarocks" "luarocks"
 install_brew_package "rg" "ripgrep"
-
+install_brew_package "lf" "lf"
 
 # Use stow to sym-link my dotfiles
 cd "$script_dir" || exit 1

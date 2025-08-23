@@ -10,7 +10,7 @@ mkdir -p "$download_dir"
 sudo apt update && sudo apt upgrade -y
 
 # Installing CLI tools
-sudo apt install -y tmux tree bat ripgrep fzf nodejs npm unzip luarocks \
+sudo apt install -y tmux tree bat ripgrep fzf nodejs npm unzip luarocks lf \
     zoxide neofetch fd-find g++ gcc ranger git curl vim stow python3-pip python3-venv
 
 # Installing zsh
