@@ -1,5 +1,7 @@
+-- Disabled because snacks.lua provides a similar functionality
 return {
   "stevearc/aerial.nvim",
+  enabled = false,
   opts = {},
   -- Optional dependencies
   dependencies = {
