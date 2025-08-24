@@ -26,6 +26,16 @@ return {
       dapui.close()
     end
 
+    dap.configurations.java = {
+      {
+        type = "java",
+        request = "attach",
+        name = "Debug (Attach) - Remote",
+        hostName = "127.0.0.1",
+        port = 5005,
+      },
+    }
+
     vim.keymap.set("n", "<Leader>db", dap.toggle_breakpoint, { desc = "Toggle Breakpoint" })
     vim.keymap.set("n", "<Leader>du", dapui.toggle, { desc = "Toggle UI" })
     vim.keymap.set("n", "<Leader>dt", dap_go.debug_test, { desc = "Debug Test" })

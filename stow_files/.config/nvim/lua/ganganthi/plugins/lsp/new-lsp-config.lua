@@ -202,7 +202,7 @@ return {
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
-      -- FORMATTERS ----------------
+      ------- FORMATTERS ----------------
       -- "black",
       "ruff",
       "gofumpt",
@@ -212,7 +212,7 @@ return {
       "stylua",
       "prettier",
       "shfmt",
-      -- LINTERS ----------------
+      ------- LINTERS ----------------
       "codespell",
       -- "flake8",
       "golangci-lint",
@@ -224,8 +224,10 @@ return {
       "shellcheck",
       "staticcheck",
       "yamllint",
-      -- DEBUGGERS --------------
+      ------- DEBUGGERS --------------
       "delve",
+      "java-debug-adapter",
+      "java-test",
     })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
