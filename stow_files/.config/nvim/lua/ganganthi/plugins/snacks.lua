@@ -38,7 +38,16 @@ return {
     -- layout = { enabled = true },
     lazygit = { enabled = true },
     notifier = { enabled = true },
-    picker = { enabled = true },
+    picker = {
+      enabled = true,
+      exclude = {},
+      formatters = {
+        file = {
+          filename_first = true,
+          truncate = 100,
+        },
+      },
+    },
     quickfile = { enabled = true },
     scope = { enabled = true },
     scroll = { enabled = true },
