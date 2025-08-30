@@ -69,6 +69,7 @@ sudo n stable
 # Install packages for neovim
 sudo npm install -g neovim
 sudo npm install -g sql-language-server
+sudo npm install -g mermaid-cli
 
 # tmux plugin manager
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
@@ -96,6 +97,14 @@ install_brew_package "bat" "bat"
 install_brew_package "luarocks" "luarocks"
 install_brew_package "rg" "ripgrep"
 install_brew_package "lf" "lf"
+install_brew_package "sqlite3" "sqlite"
+
+if ! which tectonic >/dev/null; then
+    echo "Installing tectonic"
+    cd "$download_dir" || exit 1
+    curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
+    sudo mv tectonic /usr/local/bin
+fi
 
 # Use stow to sym-link my dotfiles
 cd "$script_dir" || exit 1

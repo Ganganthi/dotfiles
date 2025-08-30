@@ -11,7 +11,8 @@ sudo apt update && sudo apt upgrade -y
 
 # Installing CLI tools
 sudo apt install -y tmux tree bat ripgrep fzf nodejs npm unzip luarocks lf \
-    zoxide neofetch fd-find g++ gcc ranger git curl vim stow python3-pip python3-venv
+    zoxide neofetch fd-find g++ gcc ranger git curl vim stow python3-pip python3-venv \
+    sqlite3
 
 # Installing zsh
 if ! which zsh >/dev/null; then
@@ -104,6 +105,7 @@ fi
 # Install packages for neovim
 sudo npm install -g neovim
 sudo npm install -g sql-language-server
+sudo npm install -g mermaid-cli
 
 # tmux plugin manager
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
@@ -159,6 +161,13 @@ if ! which docker >/dev/null; then
 fi
 
 sudo apt install -y python3-pynvim
+
+if ! which tectonic >/dev/null; then
+    echo "Installing tectonic"
+    cd "$download_dir" || exit 1
+    curl --proto '=https' --tlsv1.2 -fsSL https://drop-sh.fullyjustified.net | sh
+    sudo mv tectonic /usr/local/bin
+fi
 
 # Use stow to sym-link my dotfiles
 cd "$script_dir" || exit 1
