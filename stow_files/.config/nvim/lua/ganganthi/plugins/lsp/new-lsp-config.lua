@@ -184,7 +184,9 @@ return {
           },
         },
       },
+      smithy_ls = {},
       sqlls = {},
+      ts_ls = {},
     }
 
     -- Ensure the servers and tools above are installed
