@@ -163,6 +163,14 @@ return {
             completion = {
               callSnippet = "Replace",
             },
+            diagnostics = {
+              globals = { "vim", "java_filetypes" }, -- tells the LSP that `vim` is a global
+            },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file("", true), -- makes the LSP aware of Neovim runtime files
+              checkThirdParty = false, -- optional: disables prompts about third-party libraries
+            },
+
             -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
             -- diagnostics = { disable = { 'missing-fields' } },
           },
